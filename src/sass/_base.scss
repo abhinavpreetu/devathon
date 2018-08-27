@@ -2,6 +2,16 @@ p {
   margin: 0;
 }
 
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
 .page-title {
   margin: 10px;
   text-align: center;

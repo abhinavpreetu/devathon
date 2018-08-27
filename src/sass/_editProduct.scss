@@ -1,0 +1,192 @@
+.edit-product {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  width: 500px;
+  z-index: 1;
+  box-shadow: 0 -2px 3px 0 transparentize(#000000, .6);
+
+  > section {
+    display: flex;
+  }
+
+  > .image {
+    height: 200px;
+
+    > img {
+      width: 50%;
+      object-fit: cover;
+      padding: 10px 5px 10px 10px;
+    }
+
+    > .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 10px 10px 5px;
+
+      .btn {
+        background: #cecece url("../../assets/picture.svg") no-repeat center/100px;
+        color: #acacac;
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        > p {
+          position: absolute;
+          bottom: 10px;
+          text-align: center;
+          width: 100%;
+
+          > span {
+            display: block;
+            font-size: .9em;
+
+            &.add {
+              border: 1px solid transparentize(gray, .5);
+              padding: .3em .6em;
+              width: 10px;
+              margin: 0 auto;
+            }
+
+            &.title {
+              font-size: 1.1rem;
+              color: gray;
+            }
+          }
+        }
+      }
+
+      input[type=file] {
+        cursor: pointer;
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    }
+  }
+
+  > .properties {
+    padding: 1em;
+
+    > .fixed {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    > .variation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+
+      &.zeroth {
+        justify-content: center;
+        align-items: center;
+      }
+
+      > .zeroth {
+        text-align: center;
+
+        > button {
+          padding: .5em 1em;
+          color: #b4b4b4;
+          margin-bottom: 10px;
+          border: 1px solid transparentize(#b4b4b4, .5);
+
+          &:active, &:focus {
+            outline: 0;
+          }
+        }
+
+        > p {
+          color: #b4b4b4;
+        }
+      }
+
+      .options {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-of-type) {
+          margin-bottom: 10px;
+        }
+      }
+
+      button {
+        color: #b4b4b4;
+        font-size: .8em;
+        text-align: left;
+
+        &.big {
+          font-size: 1.1em;
+          margin-top: 1em;
+        }
+
+        > .add-button {
+          display: inline-block;
+          border: 1px solid transparentize(#b4b4b4, .5);
+          padding: .3em .6em;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  label {
+    font-size: .8em;
+    color: #b4b4b4;
+    margin-bottom: 2px;
+    text-transform: capitalize;
+  }
+
+  input[type=text], select {
+    border: none;
+    border-bottom: 1px solid transparentize(#b4b4b4, .8);
+    padding: 4px 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: grey;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: #efefef;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+
+    > div {
+      flex-basis: calc(100% - 50px);
+      padding: 0 10px;
+
+      > label {
+        display: block;
+      }
+
+      > input {
+        width: 100%;
+      }
+    }
+
+    > .save {
+      width: 50px;
+      height: 50px;
+      background: #6ddbdb url("../../assets/arrow-right.svg") no-repeat center/30px;
+    }
+  }
+}

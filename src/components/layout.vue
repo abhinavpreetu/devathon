@@ -1,5 +1,7 @@
 <template>
-<imageList />
+<main>
+  <imageList />
+</main>
 </template>
 
 <script>
@@ -7,11 +9,6 @@ import imageList from './imageList/ImageList';
 
 export default {
   name: 'layout',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
 
   components: {
     imageList,

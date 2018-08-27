@@ -1,0 +1,41 @@
+.products-page {
+  background-color: #efefef;
+  padding: 2em;
+  width: 80vw;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .imageList {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .product {
+      flex-basis: 33%;
+      max-width: 300px;
+      background-color: #ffffff;
+      margin-bottom: 1em;
+      text-align: left;
+
+      > img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .info {
+        padding: 0 1em;
+
+        > .title, > .price {
+          color: grey;
+          padding: 8px 0;
+        }
+
+        > .title {
+          border-bottom: 1px solid grey;
+        }
+      }
+    }
+  }
+}

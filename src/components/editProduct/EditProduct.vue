@@ -20,31 +20,43 @@
         type="text"
         id="productTitle"
         placeholder="Enter product title"
-        v-model="productTitle">
+        v-model="product.title">
 
       <label for="productPrice">price</label>
-      <input
-        type="text"
-        id="productPrice"
-        placeholder="Enter product price"
-        v-model="productPrice">
+      <div class="flex">
+        <p>&#x20B9;</p>
+        <input
+          type="text"
+          id="productPrice"
+          placeholder="Enter product price"
+          @input="formatPrice($event)"
+          v-model="product.price">
+      </div>
 
       <label for="productOfferPrice">offer price</label>
-      <input
-        type="text"
-        id="productOfferPrice"
-        placeholder="Enter offer price"
-        v-model="productOfferPrice">
+      <div class="flex">
+        <p>&#x20B9;</p>
+        <input
+          type="text"
+          id="productOfferPrice"
+          @input="formatPrice"
+          placeholder="Enter offer price"
+          v-model="product.offerPrice">
+      </div>
 
       <label for="productShippingCost">shipping cost</label>
-      <input
-        type="text"
-        id="productShippingCost"
-        placeholder="Enter shipping cost"
-        v-model="productShippingCost">
+      <div class="flex">
+        <p>&#x20B9;</p>
+        <input
+          type="text"
+          @input="formatPrice"
+          id="productShippingCost"
+          placeholder="Enter shipping cost"
+          v-model="product.shippingCost">
+      </div>
 
       <label for="productCount">product title</label>
-      <select id="productCount">
+      <select id="productCount" v-model="product.count">
         <option :value="i" v-for="i in inventoryArr" :key="i">{{i}}</option>
       </select>
     </div>
@@ -58,12 +70,16 @@
             v-model="value.title"
             placeholder="Enter option name"
             :key="ind" />
-          <button><span class="add-button">+</span> Add more variation</button>
+          <button @click="addVariables(index)">
+            <span class="add-button">+</span> Add more variation
+          </button>
         </div>
-        <button class="big"><span class="add-button">+</span> Add more variation</button>
+        <button class="big" @click="addOptions">
+          <span class="add-button">+</span> Add more variation
+        </button>
       </section>
       <div class="zeroth" v-else>
-        <button>+</button>
+        <button @click="addOptions">+</button>
         <p>Have variations to your product like size, color and more?</p>
       </div>
     </div>
@@ -74,10 +90,10 @@
       <input
         type="text"
         id="productDescription"
-        v-model="productDescription"
+        v-model="product.description"
         placeholder="Enter Description for Project">
     </div>
-    <button class="save"></button>
+    <button class="save" @click="saveHandler"></button>
   </section>
 </main>
 </template>

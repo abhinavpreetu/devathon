@@ -22,7 +22,7 @@ export default {
       'setSelectedProduct',
     ]),
 
-    cardClickHandler(productId) {
+    cardClickHandler(event, productId) {
       this.setSelectedProduct(productId);
       this.toggleEditProduct(true);
     },

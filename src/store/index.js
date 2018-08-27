@@ -19,9 +19,10 @@ export default new Vuex.Store({
         title: 'somename1',
         src: image1,
         price: 80,
-        offerPrice: null,
+        offerPrice: 0,
         shippingCost: 0,
         description: 'description 1',
+        count: 2,
         variables: [
           {
             name: 'option 1',
@@ -41,9 +42,10 @@ export default new Vuex.Store({
         title: 'somename2',
         src: image2,
         price: 800,
-        offerPrice: null,
+        offerPrice: 0,
         shippingCost: 100,
         description: 'description 2',
+        count: 0,
         variables: [],
       },
       {
@@ -54,6 +56,7 @@ export default new Vuex.Store({
         offerPrice: 20,
         shippingCost: 0,
         description: '',
+        count: 2,
         variables: [],
       },
       {
@@ -61,9 +64,10 @@ export default new Vuex.Store({
         title: 'somename4',
         src: image4,
         price: 840,
-        offerPrice: null,
+        offerPrice: 0,
         shippingCost: 0,
         description: 'description 4',
+        count: 2,
         variables: [],
       },
       {
@@ -71,9 +75,10 @@ export default new Vuex.Store({
         title: 'somename5',
         src: image5,
         price: 805,
-        offerPrice: null,
+        offerPrice: 0,
         shippingCost: 0,
         description: 'description 5',
+        count: 2,
         variables: [],
       },
       {
@@ -84,6 +89,7 @@ export default new Vuex.Store({
         offerPrice: 300,
         shippingCost: 120,
         description: 'description 6',
+        count: 0,
         variables: [],
       },
     ],
@@ -98,6 +104,12 @@ export default new Vuex.Store({
 
     [types.setSelectedProduct](state, payload) {
       state.selectedProduct = payload;
+    },
+
+    [types.changeProductDetails](state, payload) {
+      state.products = [...state.products.map(product => (product.id === state.selectedProduct
+        ? { ...product, ...payload }
+        : product))];
     },
   },
 
@@ -116,6 +128,11 @@ export default new Vuex.Store({
 
     setSelectedProduct({ commit }, payload) {
       commit(types.setSelectedProduct, payload);
+    },
+
+    changeProductDetails({ commit }, payload) {
+      commit(types.changeProductDetails, payload);
+      commit(types.toggleEditProduct, false);
     },
   },
 });

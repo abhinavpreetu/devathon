@@ -7,7 +7,7 @@ button {
   cursor: pointer;
   border: none;
 
-  &:focus {
+  &:focus, &:active {
     outline: 0;
   }
 }

@@ -1,10 +1,12 @@
 <template>
 <main>
   <imageList />
+  <div class="overlay" v-if="editProductFlag" @click="toggleEditProduct(false)"></div>
 </main>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import imageList from './imageList/ImageList';
 
 export default {
@@ -13,11 +15,31 @@ export default {
   components: {
     imageList,
   },
+
+  computed: {
+    ...mapGetters({
+      editProductFlag: 'editProduct',
+    }),
+  },
+
+  methods: {
+    ...mapActions([
+      'toggleEditProduct',
+    ]),
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
 h1, h2 {
   font-weight: normal;
 }

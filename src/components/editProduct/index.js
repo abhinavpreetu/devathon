@@ -18,6 +18,7 @@ export default {
     },
     files: [],
     count: null,
+    imageIndex: 0,
   }),
 
   computed: {
@@ -38,7 +39,8 @@ export default {
         const uris = imagesArr ? [...imagesArr, ...this.files] : [...this.files];
         images[this.selectedProduct] = uris;
         localStorage.setItem(IMAGES, JSON.stringify(images));
-        this.addImages(uris);
+        this.addImages({ urls: this.files });
+        this.files = [];
       }
     },
   },
@@ -121,6 +123,10 @@ export default {
         left = parseInt(computedProperties.top, 10);
         ele.setAttribute('style', `left : ${left - width - 100}px`);
       }
+    },
+
+    setImageIndex(index) {
+      this.imageIndex = index;
     },
   },
 

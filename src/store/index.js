@@ -112,10 +112,11 @@ export default new Vuex.Store({
         : product))];
     },
 
-    [types.addImages](state, payload) {
+    [types.addImages](state, { urls, index }) {
+      const ind = index || state.selectedProduct;
       const selectedProduct = state.products.filter(product =>
-        product.id === state.selectedProduct)[0];
-      selectedProduct.src = [...selectedProduct.src, ...payload];
+        product.id === ind)[0];
+      selectedProduct.src = [...selectedProduct.src, ...urls];
     },
   },
 

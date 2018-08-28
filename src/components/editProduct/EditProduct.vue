@@ -1,7 +1,7 @@
 <template>
 <main class="edit-product">
   <section class="image">
-    <img :src="productDetails.src[0]" alt="product image">
+    <img :src="productDetails.src[imageIndex]" alt="product image">
     <div class="upload-btn-wrapper" v-if="productDetails.src.length <= 1">
       <button class="btn">
         <p>
@@ -22,7 +22,16 @@
         v-for="(images, index) in productDetails.src"
         :src="images"
         :key="index"
+        @click="setImageIndex(index)"
         class="image-tile" />
+      <div class="image-tile-upload">
+        <button class="btn"><span class="add">+</span></button>
+        <input
+          type="file"
+          name="myfile"
+          @input="addImage($event)"
+          multiple="true"/>
+      </div>
     </div>
   </section>
   <section class="properties">

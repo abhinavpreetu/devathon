@@ -9,6 +9,8 @@
 import { mapGetters, mapActions } from 'vuex';
 import imageList from './imageList/ImageList';
 
+const IMAGES = 'IMAGES';
+
 export default {
   name: 'layout',
 
@@ -19,13 +21,27 @@ export default {
   computed: {
     ...mapGetters({
       editProductFlag: 'editProduct',
+      products: 'getProducts',
     }),
   },
 
   methods: {
     ...mapActions([
       'toggleEditProduct',
+      'addImages',
     ]),
+  },
+
+  mounted() {
+    let images = localStorage.getItem(IMAGES);
+    if (images) {
+      images = JSON.parse(images);
+      images.forEach((image, index) => {
+        if (image) {
+          this.addImages({ urls: image, index });
+        }
+      });
+    }
   },
 };
 </script>

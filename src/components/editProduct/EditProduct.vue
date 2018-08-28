@@ -1,8 +1,8 @@
 <template>
 <main class="edit-product">
   <section class="image">
-    <img :src="productDetails.src" alt="product image">
-    <div class="upload-btn-wrapper">
+    <img :src="productDetails.src[0]" alt="product image">
+    <div class="upload-btn-wrapper" v-if="productDetails.src.length <= 1">
       <button class="btn">
         <p>
           <span class="add">+</span>
@@ -16,6 +16,13 @@
         @input="addImage($event)"
         multiple="true"
         drop="true"/>
+    </div>
+    <div v-else class="image-tile-wrapper">
+      <img
+        v-for="(images, index) in productDetails.src"
+        :src="images"
+        :key="index"
+        class="image-tile" />
     </div>
   </section>
   <section class="properties">

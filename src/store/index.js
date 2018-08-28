@@ -17,7 +17,7 @@ export default new Vuex.Store({
       {
         id: 1,
         title: 'somename1',
-        src: image1,
+        src: [image1],
         price: 80,
         offerPrice: 0,
         shippingCost: 0,
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       {
         id: 2,
         title: 'somename2',
-        src: image2,
+        src: [image2],
         price: 800,
         offerPrice: 0,
         shippingCost: 100,
@@ -51,7 +51,7 @@ export default new Vuex.Store({
       {
         id: 3,
         title: 'somename3',
-        src: image3,
+        src: [image3],
         price: 56,
         offerPrice: 20,
         shippingCost: 0,
@@ -62,7 +62,7 @@ export default new Vuex.Store({
       {
         id: 4,
         title: 'somename4',
-        src: image4,
+        src: [image4],
         price: 840,
         offerPrice: 0,
         shippingCost: 0,
@@ -73,7 +73,7 @@ export default new Vuex.Store({
       {
         id: 5,
         title: 'somename5',
-        src: image5,
+        src: [image5],
         price: 805,
         offerPrice: 0,
         shippingCost: 0,
@@ -84,7 +84,7 @@ export default new Vuex.Store({
       {
         id: 6,
         title: 'somename6',
-        src: image6,
+        src: [image6],
         price: 801,
         offerPrice: 300,
         shippingCost: 120,
@@ -111,6 +111,12 @@ export default new Vuex.Store({
         ? { ...product, ...payload }
         : product))];
     },
+
+    [types.addImages](state, payload) {
+      const selectedProduct = state.products.filter(product =>
+        product.id === state.selectedProduct)[0];
+      selectedProduct.src = [...selectedProduct.src, ...payload];
+    },
   },
 
   getters: {
@@ -133,6 +139,10 @@ export default new Vuex.Store({
     changeProductDetails({ commit }, payload) {
       commit(types.changeProductDetails, payload);
       commit(types.toggleEditProduct, false);
+    },
+
+    addImages({ commit }, payload) {
+      commit(types.addImages, payload);
     },
   },
 });

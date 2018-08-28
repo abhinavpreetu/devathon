@@ -71,6 +71,18 @@
         opacity: 0;
       }
     }
+
+    .image-tile-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+
+      > .image-tile {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+    }
   }
 
   > .properties {

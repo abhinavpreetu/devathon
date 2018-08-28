@@ -6,7 +6,7 @@
     <div class="product"
       v-for="product in products"
       :key="product.id">
-      <img :src="product.src"
+      <img :src="product.src[0]"
            @click="cardClickHandler($event, product.id)"
            alt="product image">
       <div class="info">

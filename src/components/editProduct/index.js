@@ -1,6 +1,7 @@
 import { mapGetters, mapActions } from 'vuex';
 
 const inventoryArr = [...Array(10).keys()];
+const IMAGES = 'IMAGES';
 
 export default {
   name: 'EditProduct',
@@ -15,19 +16,37 @@ export default {
       description: '',
       count: null,
     },
+    files: [],
+    count: null,
   }),
 
   computed: {
     ...mapGetters({
       productDetails: 'selectedProductsDetails',
+      selectedProduct: 'selectedProduct',
     }),
 
     inventoryArr: () => inventoryArr,
   },
 
+  watch: {
+    files: function () { //eslint-disable-line
+      if (this.files.length === this.count) {
+        let images = localStorage.getItem(IMAGES);
+        images = images ? JSON.parse(images) : [];
+        const imagesArr = images[this.selectedProduct];
+        const uris = imagesArr ? [...imagesArr, ...this.files] : [...this.files];
+        images[this.selectedProduct] = uris;
+        localStorage.setItem(IMAGES, JSON.stringify(images));
+        this.addImages(uris);
+      }
+    },
+  },
+
   methods: {
     ...mapActions([
       'changeProductDetails',
+      'addImages',
     ]),
 
     formatPrice(event) {
@@ -74,12 +93,13 @@ export default {
     addImage(event) {
       const { files } = event.target;
       const filesArr = [...files];
-      const filesUri = [];
+      this.count = filesArr.length;
+      const self = this;
       filesArr.forEach((file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = function () { //eslint-disable-line
-          filesUri.push(reader.result);
+          self.files.push(reader.result);
         };
       });
     },

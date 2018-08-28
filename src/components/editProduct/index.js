@@ -93,7 +93,8 @@ export default {
     },
 
     addImage(event) {
-      const { files } = event.target;
+      event.preventDefault();
+      const { files } = event.type === 'drop' ? event.dataTransfer : event.target;
       const filesArr = [...files];
       this.count = filesArr.length;
       const self = this;

@@ -12,7 +12,7 @@
   }
 
   > .image {
-    height: 200px;
+    height: 250px;
 
     > img {
       width: 50%;
@@ -95,7 +95,7 @@
           box-sizing: border-box;
 
           > .btn {
-            background: #cecece url("../../assets/picture.svg") no-repeat center/contain;
+            background: #DFE8EB url("../../assets/picture.svg") no-repeat center/contain;
             color: #acacac;
             height: 100%;
             width: 100%;
@@ -160,7 +160,7 @@
           padding: .5em 1em;
           color: #b4b4b4;
           margin-bottom: 10px;
-          border: 1px solid transparentize(#b4b4b4, .5);
+          border: 1px solid transparentize(#979797, .5);
 
           &:active, &:focus {
             outline: 0;
@@ -193,7 +193,7 @@
 
         > .add-button {
           display: inline-block;
-          border: 1px solid transparentize(#b4b4b4, .5);
+          border: 1px solid transparentize(#979797, .5);
           padding: .3em .6em;
           cursor: pointer;
         }
@@ -218,7 +218,7 @@
     padding: 4px 0;
     margin-bottom: 10px;
     font-size: 1.1em;
-    color: grey;
+    color: #494F66;
     width: 100%;
 
     &:focus {
@@ -252,7 +252,7 @@
     > .save {
       width: 50px;
       height: 55px;
-      background: #6ddbdb url("../../assets/arrow-right.svg") no-repeat center/30px;
+      background: #56C9E9 url("../../assets/arrow-right.svg") no-repeat center/20px;
     }
   }
 }

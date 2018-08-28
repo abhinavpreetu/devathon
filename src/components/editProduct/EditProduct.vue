@@ -2,7 +2,10 @@
 <main class="edit-product">
   <section class="image">
     <img :src="productDetails.src[imageIndex]" alt="product image">
-    <div class="upload-btn-wrapper" v-if="productDetails.src.length <= 1">
+    <div
+      class="upload-btn-wrapper"
+      v-if="productDetails.src.length <= 1"
+      @drop.capture="addImage($event)">
       <button class="btn">
         <p>
           <span class="add">+</span>

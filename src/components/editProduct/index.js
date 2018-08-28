@@ -23,10 +23,6 @@ export default {
     }),
 
     inventoryArr: () => inventoryArr,
-
-    formattedPrice() {
-      return this.price.toLocaleString('en-IN');
-    },
   },
 
   methods: {
@@ -54,7 +50,8 @@ export default {
     },
 
     addOptions() {
-      this.product.variables.push({
+      const { variables } = this.product;
+      variables.push({
         name: `option ${this.product.variables.length + 1}`,
         values: [
           {
@@ -62,12 +59,16 @@ export default {
           },
         ],
       });
+      this.$set(this.product, 'variables', variables);
     },
 
     addVariables(index) {
-      this.product.variables[index].values.push({
+      const { variables } = this.product;
+      const values = variables[index].values;
+      values.push({
         title: '',
       });
+      this.$set(this.product.variables[index], 'values', values);
     },
 
     saveHandler() {
@@ -93,9 +94,18 @@ export default {
   mounted() {
     this.updateModalPosition();
     if (this.productDetails) {
-      this.product = { ...this.productDetails };
+      this.product = { ...this.productDetails, variables: [] };
+      const self = this;
+      this.productDetails.variables.forEach((opt) => {
+        const data = {
+          name: opt.name,
+          values: [],
+        };
+        data.values = [...opt.values];
+        self.product.variables.push(data);
+      });
+      this.product.price = this.product.price.toLocaleString('en-IN');
+      this.product.offerPrice = this.product.offerPrice.toLocaleString('en-IN');
     }
-    this.product.price = this.product.price.toLocaleString('en-IN');
-    this.product.offerPrice = this.product.offerPrice.toLocaleString('en-IN');
   },
 };

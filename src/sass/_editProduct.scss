@@ -76,9 +76,13 @@
   > .properties {
     padding: 1em;
 
-    > .fixed {
+    > .fixed, > .variation {
       display: flex;
       flex-direction: column;
+      flex-basis: 50%;
+    }
+
+    > .fixed {
       padding: 10px;
 
       > .flex {
@@ -100,8 +104,6 @@
     }
 
     > .variation {
-      display: flex;
-      flex-direction: column;
       align-items: flex-start;
       padding: 10px;
 
@@ -176,6 +178,7 @@
     margin-bottom: 10px;
     font-size: 1.1em;
     color: grey;
+    width: 100%;
 
     &:focus {
       outline: 0;

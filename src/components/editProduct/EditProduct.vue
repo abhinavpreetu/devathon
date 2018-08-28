@@ -60,9 +60,9 @@
         <option :value="i" v-for="i in inventoryArr" :key="i">{{i}}</option>
       </select>
     </div>
-    <div :class="['variation', { 'zeroth' : productDetails.variables.length == 0 }]">
-      <section v-if="productDetails.variables.length">
-        <div v-for="(option, index) in productDetails.variables" :key="index" class="options">
+    <div :class="['variation', { 'zeroth' : product.variables.length == 0 }]">
+      <section v-if="product.variables.length">
+        <div v-for="(option, index) in product.variables" :key="index" class="options">
           <label>{{option.name}}</label>
           <input
             type="text"

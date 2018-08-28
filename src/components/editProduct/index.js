@@ -71,6 +71,19 @@ export default {
       this.$set(this.product.variables[index], 'values', values);
     },
 
+    addImage(event) {
+      const { files } = event.target;
+      const filesArr = [...files];
+      const filesUri = [];
+      filesArr.forEach((file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function () { //eslint-disable-line
+          filesUri.push(reader.result);
+        };
+      });
+    },
+
     saveHandler() {
       this.changeProductDetails(this.product);
     },

@@ -10,7 +10,12 @@
           <span>drop file here</span>
         </p>
       </button>
-      <input type="file" name="myfile" multiple="true" drop="true"/>
+      <input
+        type="file"
+        name="myfile"
+        @input="addImage($event)"
+        multiple="true"
+        drop="true"/>
     </div>
   </section>
   <section class="properties">
